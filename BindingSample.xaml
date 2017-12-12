@@ -1,0 +1,17 @@
+﻿<Window x:Class="WpfMemoryLeak.BindingSample"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfMemoryLeak"
+        mc:Ignorable="d"
+        Title="BindingSample" Height="300" Width="300">
+    <Grid>
+        <!-- This page leaks per https://support.microsoft.com/en-us/kb/938416 -->
+        <Label Name="MyLabel">
+            <StackPanel Name="MyStackPanel">
+                <TextBlock Text="{Binding ElementName=MyStackPanel, Path=Children.Count}" />
+            </StackPanel>
+        </Label>
+    </Grid>
+</Window>
