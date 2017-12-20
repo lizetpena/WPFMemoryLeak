@@ -10,7 +10,29 @@
         <Button x:Name="bttnShowMonitor" Click="bttnShowMonitor_Click">Show Monitor</Button>
         <Button x:Name="bttnAddItem" Click="bttnAddItem_Click">AddItem</Button>
         <Button x:Name="bttnRemoveItem" Click="bttnRemoveItem_Click">RemoveItem</Button>
-        <ListBox x:Name="theItems"/>
+        <ListView x:Name="theItems" >
+           
+            <ListView.View>
+                <GridView AllowsColumnReorder="true"
+              ColumnHeaderToolTip="Customer Information">
+
+                    <GridViewColumn DisplayMemberBinding=
+                          "{Binding Path=Name}" 
+                      Header="Name" Width="100"/>
+
+                    <GridViewColumn DisplayMemberBinding=
+                          "{Binding Path=City}" 
+                      Width="100">
+                        <GridViewColumnHeader>City
+                            
+                        </GridViewColumnHeader>
+                    </GridViewColumn>
+
+                    
+                </GridView>
+            </ListView.View>
+        </ListView>
+                
         <Button x:Name="bttnBindingPage" Click="bttnBindingPage_Click">Show Binding Page</Button>
     </StackPanel>
 </Window>

@@ -31,18 +31,25 @@ namespace WpfMemoryLeak
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            theItems.ItemsSource = _data;
+            if ((theItems.Items==null)||(theItems.Items.Count == 0))
+            {
+                theItems.ItemsSource = _data;
+            }
+            
+            
         }
 
         private void bttnAddItem_Click(object sender, RoutedEventArgs e)
         {
-            _data.Add(new Customer { Name = "Ben", City = "Dallas" });
+            _data.Add(new Customer { Name = "Lizet", City = "Chicago" });
         }
 
         private void bttnRemoveItem_Click(object sender, RoutedEventArgs e)
         {
-            _data.RemoveAt(0);
-
+            if (_data.Count > 0)
+            {
+                _data.RemoveAt(0);
+            }
         }
 
         private void bttnShowMonitor_Click(object sender, RoutedEventArgs e)

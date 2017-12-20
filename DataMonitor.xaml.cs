@@ -36,8 +36,9 @@ namespace WpfMemoryLeak
 
         private void DataSource_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-          var collection =   (ObservableCollection<object>)sender;
+            var collection =   (ObservableCollection<object>)sender;
             txtDataCount.Text = $"Collection has {collection.Count} items";
+            txtDataCount.Visibility = Visibility.Visible;
         }
     }
 }
