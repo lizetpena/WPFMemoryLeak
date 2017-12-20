@@ -30,6 +30,7 @@ namespace WpfMemoryLeak
 
         private void BindingSample_Loaded(object sender, RoutedEventArgs e)
         {
+            
             var files = Directory.GetFiles(".\\books");
             foreach (var file in files)
             {

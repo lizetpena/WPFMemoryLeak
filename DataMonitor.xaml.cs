@@ -21,21 +21,28 @@ namespace WpfMemoryLeak
     /// </summary>
     public partial class DataMonitor : Window
     {
-        long[] data = new long[1024 * 1024];
+
+        private UInt64[] _dataLeaked = new UInt64[1024*1024];
+        private List<ulong> _dataLeaked2 = new List<ulong>();
 
         public DataMonitor()
         {
+            
             InitializeComponent();
         }
 
+        
 
         public void SetDataSource(ObservableCollection<object> DataSource)
         {
+                
             DataSource.CollectionChanged += DataSource_CollectionChanged;
         }
 
         private void DataSource_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
+            _dataLeaked2.AddRange(_dataLeaked.ToList<ulong>());
+
             var collection =   (ObservableCollection<object>)sender;
             txtDataCount.Text = $"Collection has {collection.Count} items";
             txtDataCount.Visibility = Visibility.Visible;
